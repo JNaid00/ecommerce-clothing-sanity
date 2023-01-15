@@ -8,7 +8,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 const Navbar = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.myCart.cart);
-
+  
   return (
     <div className="flex items-center w-full  h-16 bg-[#FFFFFF]/90 text-black top-0 left-0 z-10">
       <div className="w-[80%] mx-auto flex items-center justify-between">
