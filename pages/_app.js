@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { wrapper } from "@/store/store";
-import { theme } from "./theme";
+import { theme } from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 const App = ({ Component, pageProps }) => {

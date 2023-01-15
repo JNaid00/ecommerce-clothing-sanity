@@ -2,7 +2,7 @@ import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { IoMdClose, IoMdRemove } from "react-icons/io";
 import { HiPlus } from "react-icons/hi";
-import { shades } from "@/pages/theme";
+import { shades } from "@/styles/theme";
 import {
   decreaseCount,
   increaseCount,
