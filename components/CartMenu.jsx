@@ -43,24 +43,9 @@ const CartMenu = () => {
             </Typography>
           </div>
           <div className="mx-4">
-            <Button
-              variant="contained"
-              sx={{
-                color: "black",
-                borderRadius: 0,
-                minWidth: "100%",
-                padding: "20px 40px",
-                m: "20px 0",
-                "&:hover": {
-                  color: "white",
-                },
-              }}
-              onClick={() => {
+            <button className="bg-slate-900 text-white hover:bg-slate-900/80 min-w-full rounded-md py-5 px-10 my-5" onClick={() => {
                 dispatch(setIsCartOpen({}));
-              }}
-            >
-              CHECKOUT
-            </Button>
+              }}> CHECKOUT</button>
           </div>
         </div>
       </div>
