@@ -27,8 +27,8 @@ const Navbar = () => {
             color="secondary"
             sx={{
               "& .MuiBadge-badge": {
-                right: 10,
-                top: 10,
+                right: 5,
+                top: 5,
                 height: "20px",
                 width: "auto",
                 fontSize: "15px",
