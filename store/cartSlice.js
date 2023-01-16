@@ -17,11 +17,12 @@ export const CartSlice = createSlice({
       state.cart = [...state.cart, action.payload.item];
     },
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+      console.log(state.cart, "Action");
+      state.cart = state.cart.filter((item) => item._id !== action.payload._id);
     },
     increaseCount: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item._id === action.payload._id) {
           item.count++;
         }
 
@@ -30,7 +31,7 @@ export const CartSlice = createSlice({
     },
     decreaseCount: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item.id === action.payload.id && item.count > 1) {
+        if (item._id === action.payload._id && item.count > 1) {
           item.count--;
         }
 

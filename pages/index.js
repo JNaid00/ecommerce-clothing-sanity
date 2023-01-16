@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Image from "next/image";
+
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/Navbar";
@@ -20,7 +19,7 @@ export default function Home({ products }) {
       <HeroBanner />
       <div className="w-full flex">
         {products.map((item, index) => (
-          <ProductItem key={`${item.slug._id}-${index}`} item={item} width="500px" />
+          <ProductItem key={`${item._id}`} item={item} width="500px" />
         ))}
       </div>
       {isCartOpen && <CartMenu />}
