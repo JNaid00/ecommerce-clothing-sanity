@@ -11,6 +11,9 @@ module.exports = {
         "blue-girl" : "url('/homepage/blue-girl.jpg')"
       }
     },
+    gridTemplateColumns: {
+        "shoping-list" : "repeat(auto-fill, 300px)"
+    },
   },
   plugins: [],
 };

@@ -41,10 +41,11 @@ export default {
       of: [{type: 'string'}],
       options: {
         list: [
-          {title: 'Men', value: 'men'},
-          {title: 'Women', value: 'women'},
-          {title: 'Popular', value: 'popular'},
-          {title: 'New-Arrival', value: 'newArrival'},
+          {title: 'Men', value: 'Men'},
+          {title: 'Women', value: 'Women'},
+          {title: 'Popular', value: 'Popular'},
+          {title: 'New Arrival', value: 'New-Arrival'},
+          {title: 'Top Rated', value: 'Top-Rated'},
         ],
       },
     },

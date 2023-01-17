@@ -1,10 +1,9 @@
-import { Inter } from "@next/font/google";
 
 import ProductItem from "@/components/ProductItem";
-import { client } from "@/lib/client";
+import ShoppingList from "@/components/ShoppingList";
 import { Typography } from "@mui/material";
-
-export default function Home({ products }) {
+import { client } from "@/lib/client";
+export default function Home({newArrivals, popular, topRated}) {
   // console.log(products);
 
   return (
@@ -16,7 +15,7 @@ export default function Home({ products }) {
           <Typography color="red">Discover More</Typography>
         </div>
       </div>
-      <div className="h-[1000px]"></div>
+     <ShoppingList newArrivals={newArrivals} popular={popular} topRated={topRated}/>
       {/* <div className="w-full flex">
         {products.map((item, index) => (
           <ProductItem key={`${item._id}`} item={item} width="500px" />
@@ -27,10 +26,14 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const query = '*[_type == "product"]';
-  const products = await client.fetch(query);
-
+  const query = '*[_type == "product" && "New-Arrival" in category]';
+  const query1 = '*[_type == "product" && "Popular" in category]';
+  const query2 = '*[_type == "product" && "Top-Rated" in category]';
+  const newArrivals = await client.fetch(query);
+  const popular = await client.fetch(query1);
+  const topRated = await client.fetch(query2);
   return {
-    props: { products }, // will be passed to the page component as props
+    props: { newArrivals, popular , topRated },
   };
 }
+

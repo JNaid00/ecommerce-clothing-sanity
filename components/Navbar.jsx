@@ -11,7 +11,7 @@ const Navbar = () => {
   const cart = useSelector((state) => state.myCart.cart);
 
   return (
-    <div className="flex items-center w-full  h-16 bg-[#FFFFFF]/90 text-black top-0 left-0 z-10">
+    <div className="flex items-center w-full  h-16 bg-[#FFFFFF] text-black top-0 left-0 z-10 md:fixed">
       <div className="w-[80%] mx-auto flex items-center justify-between">
         <div className="cursor-pointer text-red-800 hover:bg-gray-200 p-2 rounded-lg">
           <Link href="/">

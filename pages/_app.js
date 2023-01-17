@@ -14,7 +14,10 @@ const App = ({ Component, pageProps }) => {
       <Toaster />
       <CssBaseline />
       <Navbar/>
+      <div className="md:mt-16">
       <Component {...pageProps} />
+      </div>
+      
       {isCartOpen && <CartMenu />}
     </ThemeProvider>
   );
