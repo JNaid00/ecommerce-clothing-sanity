@@ -11,6 +11,7 @@ import {
 } from "@/store/cartSlice";
 import { wrapper } from "@/store/store";
 import { urlFor } from "@/lib/client";
+import Link from "next/link";
 const CartMenu = () => {
   const flexBetween = "flex justify-between items-center";
   const isCartOpen = useSelector((state) => state.myCart.isCartOpen);
@@ -63,7 +64,7 @@ const CartMenu = () => {
                         <IoMdClose />
                       </IconButton>
                     </div>
-                    <p className="max-w-[190px] overflow-y-auto max-h-16">{item.details}</p>
+                    <p className="max-w-[190px] overflow-y-auto max-h-16">{item.details.substring(0, Math.min(70, item.details.length))}...</p>
                     <div className="flex justify-between items-center my-4">
                       <div className="flex items-center border-[1.5px] border-gray-400">
                         <IconButton
@@ -100,6 +101,7 @@ const CartMenu = () => {
             </Typography>
           </div>
           <div className="mx-4">
+            <Link href="/checkout">
             <button
               className="bg-slate-900 text-white hover:bg-slate-900/80 min-w-full rounded-md py-5 px-10 my-5"
               onClick={() => {
@@ -109,6 +111,8 @@ const CartMenu = () => {
               {" "}
               CHECKOUT
             </button>
+            </Link>
+           
           </div>
         </div>
       </div>
