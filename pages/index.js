@@ -1,28 +1,18 @@
-
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
-import Navbar from "@/components/Navbar";
-import HeroBanner from "@/components/HeroBanner";
-import CartMenu from "@/components/CartMenu";
+
 import ProductItem from "@/components/ProductItem";
-import { useSelector } from "react-redux";
 import { client } from "@/lib/client";
-import { urlFor } from "@/lib/client";
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ products }) {
-  console.log(products);
-  const isCartOpen = useSelector((state) => state.myCart.isCartOpen);
+  // console.log(products);
+
   return (
     <div>
-      <Navbar />
-      <HeroBanner />
       <div className="w-full flex">
         {products.map((item, index) => (
           <ProductItem key={`${item._id}`} item={item} width="500px" />
         ))}
       </div>
-      {isCartOpen && <CartMenu />}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { HiPlus } from "react-icons/hi";
 import { urlFor } from "@/lib/client";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 import toast from "react-hot-toast";
 import {
   IconButton,
@@ -35,11 +36,14 @@ const ProductItem = ({ item, width }) => {
         onMouseOver={() => setisHovered(true)}
         onMouseOut={() => setisHovered(false)}
       >
-        <img
-          className="h-[400px] w-[300px] cursor-pointer"
-          alt={name}
-          src={isHovered ? urlFor(image[1]) : urlFor(image[0])}
-        />
+        <Link href={`/product/${name}`}>
+          <img
+            className="h-[400px] w-[300px] cursor-pointer"
+            alt={name}
+            src={isHovered ? urlFor(image[1]) : urlFor(image[0])}
+          />
+        </Link>
+
         <div
           className={`${
             isHovered ? "blocked" : "hidden"
@@ -85,12 +89,12 @@ const ProductItem = ({ item, width }) => {
         <div className="flex space-x-3">
           {category.map((item, index) => (
             <div className="flex space-x-3" key={`${name}-${item}-${index}`}>
-              <Typography variant="subtitle2"  >{item}</Typography>
-              <Divider orientation="vertical"/>
+              <Typography variant="subtitle2">{item}</Typography>
+              <Divider orientation="vertical" />
             </div>
           ))}
         </div>
-       
+
         <Typography>{name}</Typography>
         <Typography fontWeight="bold">{SARand.format(price)}</Typography>
       </div>
