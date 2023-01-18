@@ -46,6 +46,7 @@ export default {
           {title: 'Popular', value: 'Popular'},
           {title: 'New Arrival', value: 'New-Arrival'},
           {title: 'Top Rated', value: 'Top-Rated'},
+          {title: 'Shoes', value: 'Shoes'},
         ],
       },
     },

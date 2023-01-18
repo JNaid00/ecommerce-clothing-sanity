@@ -41,7 +41,7 @@ export default function ShoppingList({
         <Tab label="TOP RATED" value="topRated" />
       </Tabs>
       <div className="mx-auto grid grid-cols-shoping-list justify-around gap-y-[20px] gap-x-[1.33%]">
-      {value === "all" &&
+        {value === "all" &&
           allProducts.map((item, index) => (
             <ProductItem key={`${item._id}`} item={item} />
           ))}
