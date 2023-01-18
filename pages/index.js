@@ -3,7 +3,7 @@ import ProductItem from "@/components/ProductItem";
 import ShoppingList from "@/components/ShoppingList";
 import { Typography } from "@mui/material";
 import { client } from "@/lib/client";
-export default function Home({newArrivals, popular, topRated}) {
+export default function Home({newArrivals, popular, topRated, allProducts}) {
   // console.log(products);
 
   return (
@@ -15,25 +15,22 @@ export default function Home({newArrivals, popular, topRated}) {
           <Typography color="red">Discover More</Typography>
         </div>
       </div>
-     <ShoppingList newArrivals={newArrivals} popular={popular} topRated={topRated}/>
-      {/* <div className="w-full flex">
-        {products.map((item, index) => (
-          <ProductItem key={`${item._id}`} item={item} width="500px" />
-        ))}
-      </div> */}
+     <ShoppingList newArrivals={newArrivals} popular={popular} topRated={topRated} allProducts={allProducts}/>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
+  const getAll = '*[_type == "product"]';
   const query = '*[_type == "product" && "New-Arrival" in category]';
   const query1 = '*[_type == "product" && "Popular" in category]';
   const query2 = '*[_type == "product" && "Top-Rated" in category]';
   const newArrivals = await client.fetch(query);
   const popular = await client.fetch(query1);
   const topRated = await client.fetch(query2);
+  const allProducts = await client.fetch(getAll);
   return {
-    props: { newArrivals, popular , topRated },
+    props: { newArrivals, popular , topRated , allProducts},
   };
 }
 

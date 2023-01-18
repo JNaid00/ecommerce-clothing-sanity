@@ -14,13 +14,13 @@ import {
   Icon,
   Divider,
 } from "@mui/material";
-import { addToCart } from "@/store/cartSlice";
+import { addToCart, setItems } from "@/store/cartSlice";
 import { shades } from "@/styles/theme";
 const ProductItem = ({ item, width }) => {
   const dispatch = useDispatch();
   const [count, setcount] = useState(0);
   const [isHovered, setisHovered] = useState(false);
-  const { image, price, name, category } = item;
+  const { image, price, name, category, _id } = item;
   let SARand = new Intl.NumberFormat("en-ZA", {
     style: "currency",
     currency: "ZAR",
@@ -36,7 +36,7 @@ const ProductItem = ({ item, width }) => {
         onMouseOver={() => setisHovered(true)}
         onMouseOut={() => setisHovered(false)}
       >
-        <Link href={`/product/${name}`}>
+        <Link href={`/product/${_id}`} onClick={() => dispatch(setItems(item))}>
           <img
             className="h-[400px] w-[300px] cursor-pointer"
             alt={name}

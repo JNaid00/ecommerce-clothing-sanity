@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import { useSelector } from "react-redux";
 import CartMenu from "@/components/CartMenu";
+import Footer from "@/components/Footer";
 const App = ({ Component, pageProps }) => {
   const isCartOpen = useSelector((state) => state.myCart.isCartOpen);
   return (
@@ -17,7 +18,7 @@ const App = ({ Component, pageProps }) => {
       <div className="md:mt-16">
       <Component {...pageProps} />
       </div>
-      
+      <Footer/>
       {isCartOpen && <CartMenu />}
     </ThemeProvider>
   );

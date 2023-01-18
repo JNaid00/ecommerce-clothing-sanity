@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
+  const item = useSelector((state) => state.myCart.items);
+  console.log("🚀 ~ file: [projectid].js:5 ~ Product ~ item", item);
+  
 
-export default Product
+  return <div>Product</div>;
+};
+
+export default Product;

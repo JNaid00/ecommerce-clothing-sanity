@@ -3,10 +3,14 @@ import { Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
 import ProductItem from "./ProductItem";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ShoppingList({ newArrivals, popular, topRated }) {
-  
+export default function ShoppingList({
+  newArrivals,
+  popular,
+  topRated,
+  allProducts,
+}) {
   const dispatch = useDispatch();
-  const [value, setValue] = useState("newArrivals");
+  const [value, setValue] = useState("all");
   const breakPoint = useMediaQuery("(min-width:600px)");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -31,20 +35,25 @@ export default function ShoppingList({ newArrivals, popular, topRated }) {
           },
         }}
       >
+        <Tab label="ALL PRODUCTS" value="all" />
         <Tab label="NEW ARRIVALS" value="newArrivals" />
         <Tab label="POPULAR" value="popular" />
         <Tab label="TOP RATED" value="topRated" />
       </Tabs>
       <div className="mx-auto grid grid-cols-shoping-list justify-around gap-y-[20px] gap-x-[1.33%]">
+      {value === "all" &&
+          allProducts.map((item, index) => (
+            <ProductItem key={`${item._id}`} item={item} />
+          ))}
         {value === "newArrivals" &&
           newArrivals.map((item, index) => (
             <ProductItem key={`${item._id}`} item={item} />
           ))}
-          {value === "popular" &&
+        {value === "popular" &&
           popular.map((item, index) => (
             <ProductItem key={`${item._id}`} item={item} />
           ))}
-           {value === "topRated" &&
+        {value === "topRated" &&
           topRated.map((item, index) => (
             <ProductItem key={`${item._id}`} item={item} />
           ))}
