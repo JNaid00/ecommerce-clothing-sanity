@@ -4,7 +4,7 @@ import ShoppingList from "@/components/ShoppingList";
 import { Typography } from "@mui/material";
 import { client } from "@/lib/client";
 export default function Home({newArrivals, popular, topRated, allProducts}) {
-  // console.log(products);
+  
 
   return (
     <div>
