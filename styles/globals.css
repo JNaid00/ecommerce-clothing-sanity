@@ -2,11 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .colounmGap {
-    column-gap: clamp(20px, 30px, 40px);
-  }
-  
+  column-gap: clamp(20px, 30px, 40px);
+}
+
 .ecommerceWidth {
-    width: clamp(20%, 30%, 40%);
+  width: clamp(20%, 30%, 40%);
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all 0.2s ease;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: #d3d3d3;
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+.cta:hover::before {
+  width: 100%;
+  background: #808080;
+}
+.cta:active {
+  transform: scale(0.96);
+}
+.textspan {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }

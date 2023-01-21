@@ -1,6 +1,7 @@
 import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { IoMdClose, IoMdRemove } from "react-icons/io";
+import {BiRightArrowAlt} from "react-icons/bi"
 import { HiPlus } from "react-icons/hi";
 import { shades } from "@/styles/theme";
 import {
@@ -25,13 +26,12 @@ const CartMenu = () => {
   const totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.price;
   }, 0);
-  console.log(cart)
+  console.log(cart);
   return (
     <div
       className={`${
         isCartOpen ? "block" : "none"
       } bg-black/40 fixed z-20 w-full h-full left-0 top-0 overflow-auto`}
-    
     >
       <div className="fixed right-0 bottom-0 w-[80%] max-w-[400px] h-full bg-white">
         <div className="p-8 overflow-auto h-full">
@@ -64,20 +64,28 @@ const CartMenu = () => {
                         <IoMdClose />
                       </IconButton>
                     </div>
-                    <p className="max-w-[190px] overflow-y-auto max-h-16">{item.details.substring(0, Math.min(70, item.details.length))}...</p>
+                    <p className="max-w-[190px] overflow-y-auto max-h-16">
+                      {item.details.substring(
+                        0,
+                        Math.min(70, item.details.length)
+                      )}
+                      ...
+                    </p>
                     <div className="flex justify-between items-center my-4">
                       <div className="flex items-center border-[1.5px] border-gray-400">
                         <IconButton
-                         onClick={() =>
-                          dispatch(decreaseCount({ _id: item._id }))
-                        }
+                          onClick={() =>
+                            dispatch(decreaseCount({ _id: item._id }))
+                          }
                         >
                           <IoMdRemove />
                         </IconButton>
                         <Typography>{item.count}</Typography>
-                        <IconButton  onClick={() =>
-                          dispatch(increaseCount({ _id: item._id }))
-                        }>
+                        <IconButton
+                          onClick={() =>
+                            dispatch(increaseCount({ _id: item._id }))
+                          }
+                        >
                           <HiPlus />
                         </IconButton>
                       </div>
@@ -91,7 +99,6 @@ const CartMenu = () => {
                 <Divider />
               </div>
             ))}
-
           </div>
 
           <div className={`${flexBetween}`}>
@@ -99,23 +106,26 @@ const CartMenu = () => {
             <Typography fontWeight="bold">
               {SARand.format(totalPrice)}
             </Typography>
+           
           </div>
-          <div className="mx-4">
-            <Link href="/checkout">
-            <button
-              className="bg-slate-900 text-white hover:bg-slate-900/80 min-w-full rounded-md py-5 px-10 my-5"
+          <div className="mt-5">
+            <Link
+              href="/checkout"
+              //className="bg-slate-900 text-white border-2 border-slate-900 hover:bg-transparent hover:text-black ease-in-out transition-transform min-w-full rounded-md py-5 px-10 my-5"
               onClick={() => {
                 dispatch(setIsCartOpen({}));
               }}
             >
-              {" "}
-              CHECKOUT
-            </button>
+              <div className="cta w-fit">
+                <span className="textspan">CHECKOUT</span>
+              </div>
+            
             </Link>
-           
           </div>
+         
         </div>
       </div>
+     
     </div>
   );
 };
