@@ -21,6 +21,7 @@
     "canvas-confetti": "^1.5.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.2",
+    "formik": "^2.2.9",
     "next": "13.1.2",
     "next-redux-wrapper": "^8.1.0",
     "next-sanity": "^4.1.1",
@@ -30,7 +31,8 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.5",
-    "stripe": "^8.209.0"
+    "stripe": "^8.209.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
