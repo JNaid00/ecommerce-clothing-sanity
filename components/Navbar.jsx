@@ -15,7 +15,11 @@ const Navbar = () => {
       <div className="w-[80%] mx-auto flex items-center justify-between">
         <div className="cursor-pointer text-red-800 hover:bg-gray-200 p-2 rounded-lg">
           <Link href="/">
+            <div className="flex items-center space-x-2">
+              <img className="h-9 w-9" src="logo.png" alt="" />
             <h1 className="text-xl">Ecommerce</h1>
+            </div>
+            
           </Link>
         </div>
         <div className="flex justify-between z-20">

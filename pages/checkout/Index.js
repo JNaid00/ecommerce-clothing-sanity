@@ -90,6 +90,19 @@ const Index = () => {
 
   const handleFormSubmit = async (values, actions) => {
     setactiveStep(activeStep + 1);
+
+    if (isFirstStep && values.shippingAddress.isSameAddress) {
+      actions.setFieldValue("shippingAddress", {
+        ...values.billingAddress,
+        isSameAddress: true,
+      });
+    }
+
+    if (isSecondStep) {
+      makePayment(values);
+    }
+
+    actions.setTouched({});
   };
   return (
     <div className="w-[80%] my-[100px] mx-auto">
@@ -127,6 +140,40 @@ const Index = () => {
                   setFieldValue={setFieldValue}
                 />
               )}
+
+              <div className="flex justify-between gap-12">
+                {isSecondStep && (
+                  <div className="bg-black w-full">
+                    <Button
+                      fullWidth
+                      color="primary"
+                      variant="contained"
+                      sx={{
+                        boxShadow: "none",
+                        color: "white",
+                        borderRadius: 0,
+                        padding: "15px 40px",
+                      }}
+                      onClick={() => setactiveStep(activeStep - 1)}
+                    >
+                      BACK
+                    </Button>
+                  </div>
+                )}
+                <div className="bg-black w-full">
+                  <Button
+                    fullWidth
+                    type="submit"
+                    variant="contained"
+                    sx={{
+                      color: "white",
+                      padding: "15px 40px",
+                    }}
+                  >
+                    {!isSecondStep ? "Next" : "Place Order"}
+                  </Button>
+                </div>
+              </div>
             </form>
           )}
         </Formik>
