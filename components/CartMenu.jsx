@@ -110,7 +110,7 @@ const CartMenu = () => {
           </div>
           <div className="mt-5">
             <Link
-              href="/checkout"
+              href="/checkout/Index"
               //className="bg-slate-900 text-white border-2 border-slate-900 hover:bg-transparent hover:text-black ease-in-out transition-transform min-w-full rounded-md py-5 px-10 my-5"
               onClick={() => {
                 dispatch(setIsCartOpen({}));

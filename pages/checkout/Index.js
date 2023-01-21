@@ -81,7 +81,7 @@ const checkOutSchema = [
     phoneNumber: yup.string().required("required"),
   }),
 ];
-const index = () => {
+const Index = () => {
   const [activeStep, setactiveStep] = useState(0);
   const cart = useSelector((state) => state.myCart.cart);
 
@@ -135,4 +135,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
