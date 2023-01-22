@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import Shipping from "@/components/checkout/Shipping";
+import Payment from "@/components/checkout/Payment";
 const initialValues = {
   billingAddress: {
     firstName: "",
@@ -138,6 +139,15 @@ const Index = () => {
                   handleBlur={handleBlur}
                   handleChange={handleChange}
                   setFieldValue={setFieldValue}
+                />
+              )}
+               {isSecondStep && (
+                <Payment
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
                 />
               )}
 

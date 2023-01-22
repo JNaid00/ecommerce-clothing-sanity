@@ -16,6 +16,27 @@ import {
 } from "@mui/material";
 import { addToCart, setItems } from "@/store/cartSlice";
 import { shades } from "@/styles/theme";
+import { motion } from "framer-motion";
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 const ProductItem = ({ item, width }) => {
   const dispatch = useDispatch();
   const [count, setcount] = useState(1);
@@ -30,75 +51,90 @@ const ProductItem = ({ item, width }) => {
     palette: { neutral },
   } = useTheme();
   return (
-    <Box width={width}>
-      <div
-        className="relative w-fit"
-        onMouseOver={() => setisHovered(true)}
-        onMouseOut={() => setisHovered(false)}
-      >
-        <Link href={`/product/${_id}`} onClick={() => dispatch(setItems(item))}>
-          <img
-            className="h-[400px] w-[300px] cursor-pointer"
-            alt={name}
-            src={isHovered ? urlFor(image[1]) : urlFor(image[0])}
-          />
-        </Link>
-
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        hidden: { opacity: 0, x: -50 },
+        visible: { opacity: 1, x: 0 },
+      }}
+      
+    >
+      <Box width={width}>
         <div
-          className={`${
-            isHovered ? "lg:blocked" : "lg:hidden"
-          } absolute bottom-[10%] left-0 w-full px-[5%] blocked`}
+          className="relative w-fit"
+          onMouseOver={() => setisHovered(true)}
+          onMouseOut={() => setisHovered(false)}
         >
-          <div className="flex justify-between">
-            <div className="flex items-center bg-[#f5f5f5] rounded-sm space-x-1 ">
-              <IconButton onClick={() => setcount(Math.max(count - 1, 1))}>
-                <IoMdRemove />
-              </IconButton>
-              <Typography>{count}</Typography>
-              <IconButton onClick={() => setcount(count + 1)}>
-                <HiPlus />
-              </IconButton>
-            </div>
+          <Link
+            href={`/product/${_id}`}
+            onClick={() => dispatch(setItems(item))}
+          >
+            <img
+              className="h-[400px] w-[300px] cursor-pointer"
+              alt={name}
+              src={isHovered ? urlFor(image[1]) : urlFor(image[0])}
+            />
+          </Link>
 
-            <div className="bg-[#101010] hover:bg-[#101010]/80">
-              <Button
-                sx={{ color: "white" }}
-                onClick={() => {
-                  if (count === 0) {
-                    toast.error("Please choose an amount");
-                    return;
-                  }
-                  dispatch(
-                    addToCart({
-                      item: {
-                        ...item,
-                        count,
-                      },
-                    })
-                  );
-                }}
-              >
-                Add to Cart
-              </Button>
+          <div
+            className={`${
+              isHovered ? "lg:blocked" : "lg:hidden"
+            } absolute bottom-[10%] left-0 w-full px-[5%] blocked`}
+          >
+            <div className="flex justify-between">
+              <div className="flex items-center bg-[#f5f5f5] rounded-sm space-x-1 ">
+                <IconButton onClick={() => setcount(Math.max(count - 1, 1))}>
+                  <IoMdRemove />
+                </IconButton>
+                <Typography>{count}</Typography>
+                <IconButton onClick={() => setcount(count + 1)}>
+                  <HiPlus />
+                </IconButton>
+              </div>
+
+              <div className="bg-[#101010] hover:bg-[#101010]/80">
+                <Button
+                  sx={{ color: "white" }}
+                  onClick={() => {
+                    if (count === 0) {
+                      toast.error("Please choose an amount");
+                      return;
+                    }
+                    dispatch(
+                      addToCart({
+                        item: {
+                          ...item,
+                          count,
+                        },
+                      })
+                    );
+                  }}
+                >
+                  Add to Cart
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-1">
-        <div className="flex space-x-3">
-          {category.map((item, index) => (
-            <div className="flex space-x-3" key={`${name}-${item}-${index}`}>
-              <Typography variant="subtitle2">{item}</Typography>
-              <Divider orientation="vertical" />
-            </div>
-          ))}
+        <div className="mt-1">
+          <div className="flex space-x-3">
+            {category.map((item, index) => (
+              <div className="flex space-x-3" key={`${name}-${item}-${index}`}>
+                <Typography variant="subtitle2">{item}</Typography>
+                <Divider orientation="vertical" />
+              </div>
+            ))}
+          </div>
+
+          <Typography>{name}</Typography>
+          <Typography fontWeight="bold">{SARand.format(price)}</Typography>
         </div>
-
-        <Typography>{name}</Typography>
-        <Typography fontWeight="bold">{SARand.format(price)}</Typography>
-      </div>
-    </Box>
+      </Box>
+    </motion.div>
   );
 };
 

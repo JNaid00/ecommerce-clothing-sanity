@@ -1,7 +1,7 @@
 import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { IoMdClose, IoMdRemove } from "react-icons/io";
-import {BiRightArrowAlt} from "react-icons/bi"
+import { BiRightArrowAlt } from "react-icons/bi";
 import { HiPlus } from "react-icons/hi";
 import { shades } from "@/styles/theme";
 import {
@@ -13,6 +13,7 @@ import {
 import { wrapper } from "@/store/store";
 import { urlFor } from "@/lib/client";
 import Link from "next/link";
+
 const CartMenu = () => {
   const flexBetween = "flex justify-between items-center";
   const isCartOpen = useSelector((state) => state.myCart.isCartOpen);
@@ -26,7 +27,7 @@ const CartMenu = () => {
   const totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.price;
   }, 0);
-  console.log(cart);
+
   return (
     <div
       className={`${
@@ -106,7 +107,6 @@ const CartMenu = () => {
             <Typography fontWeight="bold">
               {SARand.format(totalPrice)}
             </Typography>
-           
           </div>
           <div className="mt-5">
             <Link
@@ -119,13 +119,10 @@ const CartMenu = () => {
               <div className="cta w-fit">
                 <span className="textspan">CHECKOUT</span>
               </div>
-            
             </Link>
           </div>
-         
         </div>
       </div>
-     
     </div>
   );
 };
