@@ -6,6 +6,8 @@ import { useState } from "react";
 import * as yup from "yup";
 import Shipping from "@/components/checkout/Shipping";
 import Payment from "@/components/checkout/Payment";
+import getStripe from "@/lib/getStripe";
+import toast from "react-hot-toast";
 const initialValues = {
   billingAddress: {
     firstName: "",
@@ -98,8 +100,29 @@ const Index = () => {
         isSameAddress: true,
       });
     }
+    const makePayment = async () => {
+      const stripe = await getStripe();
+      console.log("got here first");
+      const response = await fetch(`/api/stripe`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart)
+      });
+      console.log("got here");
 
+      if(response.statusCode == 500) return;
+      
+      const data = await response.json();
+
+      toast.loading("Redirecting...");
+
+      stripe.redirectToCheckout({ sessionId: data.id });
+
+    };
     if (isSecondStep) {
+      // console.log("Hello")
       makePayment(values);
     }
 
@@ -141,7 +164,7 @@ const Index = () => {
                   setFieldValue={setFieldValue}
                 />
               )}
-               {isSecondStep && (
+              {isSecondStep && (
                 <Payment
                   values={values}
                   errors={errors}

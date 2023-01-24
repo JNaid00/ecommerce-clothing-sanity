@@ -23,6 +23,7 @@ const Product = ({ product, allProducts }) => {
   const productId = router.query.projectid;
 
   const [item, setitem] = useState({});
+  const [index, setIndex] = useState(0);
   const [count, setcount] = useState(1);
   const [value, setValue] = useState("description");
   const handleChange = (event, newValue) => {
@@ -40,8 +41,18 @@ const Product = ({ product, allProducts }) => {
         <div className="flex-40 mb-[40px]">
           <img
             className="w-full h-full object-contain"
-            src={urlFor(image[0])}
+            src={urlFor(image && image[index])}
           />
+          <div className="gap-2 hidden sm:flex">
+            {image?.map((item, i) => (
+              <img
+                key={`${item._key}-${i}`}
+                className="w-16 h-20 cursor-pointer"
+                src={urlFor(item)}
+                onMouseEnter={() => setIndex(i)}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="flex-50 mb-[40px] ">
@@ -112,7 +123,7 @@ const Product = ({ product, allProducts }) => {
         </div>
       </div>
 
-      <div>
+      <div className="mt-9">
         <Tabs
           textColor="primary"
           indicatorColor="primary"
@@ -125,24 +136,14 @@ const Product = ({ product, allProducts }) => {
           }}
         >
           <Tab label="DESCRIPTION" value="description" />
-          <Tab label="NEW ARRIVALS" value="newArrivals" />
+          <Tab label="Reviews" value="reviews" />
         </Tabs>
       </div>
 
-      <div className="flex flex-wrap gap-4">
-        {value === "description" && ( <Typography>{details}</Typography>)}
+      <div className="flex flex-wrap gap-4 mt-2">
+        {value === "description" && <Typography>{details}</Typography>}
       </div>
 
-
-      <div className="mt-[50px] w-full">
-        <Typography variant="h3" fontWeight="bold">Related Products</Typography>
-
-        <div className="mt-[20px] flex flex-wrap gap-x-[1.33%] justify-between">
-          {/* {allProducts.map((item, index) => (
-            <ProductItem key={`${item._id}`} item={item} />
-          ))} */}
-        </div>
-      </div>
     </div>
   );
 };
@@ -170,7 +171,7 @@ export const getStaticProps = async ({ params: { _id } }) => {
   const product = await client.fetch(query);
 
   return {
-    props: { product},
+    props: { product },
   };
 };
 
