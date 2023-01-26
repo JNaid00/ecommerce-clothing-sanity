@@ -102,7 +102,7 @@ const Index = () => {
     }
     const makePayment = async () => {
       const stripe = await getStripe();
-      console.log("got here first");
+      toast.loading("Redirecting...");
       const response = await fetch(`/api/stripe`, {
         method: "POST",
         headers: {
@@ -110,13 +110,13 @@ const Index = () => {
         },
         body: JSON.stringify(cart)
       });
-      console.log("got here");
+    
 
       if(response.statusCode == 500) return;
       
       const data = await response.json();
 
-      toast.loading("Redirecting...");
+      
 
       stripe.redirectToCheckout({ sessionId: data.id });
 
