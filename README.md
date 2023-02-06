@@ -1,39 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# An ecommerce website for clothing items
+## Link to the deployed version https://ecommerce-clothing-sanity.vercel.app/
 
-## Getting Started
+Technologies used:
+ * NextJS </br> <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*gxOA6-EF8P8vnYdk3Bc9bg.png" alt="drawing" width="200"/>
+ * Sanity </br> <img src="https://assets.website-files.com/5c8bce998bdcd3b7371625fa/624376c93c16bcd235c4c07d_sanity-logo.png" alt="drawing" width="200"/>
+ * Tailwind CSS </br> <img src="https://miro.medium.com/max/1400/1*oPL8C-i04sqAUoOS_da9aA.jpeg" alt="drawing" width="200"/>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# ecommerce-clothing-sanity
